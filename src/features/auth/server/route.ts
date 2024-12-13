@@ -8,7 +8,7 @@ import { AUTH_COOKIE } from '../constants';
 import { loginSchema, registerSchema } from '../schemas';
 
 const app = new Hono()
-  .get('/me', sessionMiddleware, async (c) => {
+  .get('/current', sessionMiddleware, async (c) => {
     const user = c.get('user');
 
     return c.json({ data: user });
