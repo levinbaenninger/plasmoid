@@ -1,4 +1,5 @@
 import { QueryProvider } from '@/components/query-provider';
+import { ConfirmDialogProvider } from '@/hooks/use-confirm-dialog';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
@@ -27,8 +28,10 @@ export default function RootLayout({
     <html lang='en'>
       <body className={cn(inter.className, 'antialiased min-h-screen')}>
         <QueryProvider>
-          <Toaster />
-          {children}
+          <ConfirmDialogProvider>
+            {children}
+            <Toaster />
+          </ConfirmDialogProvider>
         </QueryProvider>
       </body>
     </html>
