@@ -3,7 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 import { z } from 'zod';
 import { useUpdateWorkspace } from '../api/use-update-workspace';
 import { updateWorkspaceSchema } from '../schemas';
@@ -31,11 +30,7 @@ export const useWorkspaceEditForm = (workspace: Workspace) => {
       { form: finalValues, param: { workspaceId: workspace.$id } },
       {
         onSuccess: () => {
-          toast.success('Workspace updated successfully');
           router.refresh();
-        },
-        onError: () => {
-          toast.error('Failed to update workspace');
         },
       },
     );
